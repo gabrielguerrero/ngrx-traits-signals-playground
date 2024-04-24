@@ -22,13 +22,13 @@ export class ProductService {
       .get<{
         resultList: Product[];
         total: number;
-      }>('http://localhost:8080/api/products')
+      }>('/products')
       .pipe(tap(console.log), delay(500));
   }
 
   getProductDetail(id: string) {
     return this.httpClient
-      .get<ProductDetail>('/api/products/' + id)
+      .get<ProductDetail>('/products/' + id)
       .pipe(delay(500));
   }
 }

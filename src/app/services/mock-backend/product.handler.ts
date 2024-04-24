@@ -17,9 +17,10 @@ export const productHandlers = [
         maker: 'Nintendo',
         releaseDate: '' + getRandomInteger(1990, 2000),
       } as ProductDetail);
-    return HttpResponse.json(productDetail, { status: 200 });
+    return HttpResponse.json(productDetail);
   }),
-  http.get('http://localhost:8080/api/products', ({ request }) => {
+
+  http.get('/products', ({ request }) => {
     console.log('request', request.url);
     let result = [...mockProducts];
     const url = new URL(request.url);

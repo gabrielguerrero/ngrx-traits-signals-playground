@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "msw": "msw",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -23,12 +24,12 @@
     "@ngrx-traits/signals": "^17.1.0-beta.10",
     "@ngrx/signals": "^17.2.0",
     "msw": "^2.2.14",
-    "prettier": "^3.2.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
+    "prettier": "^3.2.5",
     "@angular-devkit/build-angular": "^17.3.5",
     "@angular/cli": "^17.3.5",
     "@angular/compiler-cli": "^17.3.0",
