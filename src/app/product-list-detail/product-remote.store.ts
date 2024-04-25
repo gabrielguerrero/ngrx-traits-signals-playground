@@ -1,7 +1,6 @@
 import { inject } from '@angular/core';
 import {
   callConfig,
-  typedCallConfig,
   withCalls,
   withCallStatus,
   withEntitiesLoadingCall,
