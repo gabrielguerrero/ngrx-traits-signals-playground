@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ProductListDetailLocalComponent } from './product-list-detail/product-list-detail-local.component';
+import { ProductBranchListInfiniteComponent } from './product-list-detail/product-branch-list-infinite.component';
 
 @Component({
   selector: 'app-root',
-  imports: [ProductListDetailLocalComponent],
-  template: '<product-list-detail-local/>',
+  standalone: true,
+  imports: [ProductBranchListInfiniteComponent],
+  template: '<product-branch-infinite-list/>',
 })
 export class AppComponent {
   title = 'ngrx-traits-signals-playground';
