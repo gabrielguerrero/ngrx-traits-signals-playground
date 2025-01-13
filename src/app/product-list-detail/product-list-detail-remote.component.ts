@@ -15,8 +15,8 @@ import { MatDivider } from '@angular/material/divider';
 import { ProductsRemoteStore } from './product-remote.store';
 
 @Component({
-    selector: 'product-list-detail-remote',
-    template: `
+  selector: 'product-list-detail-remote',
+  template: `
     <form class="p-8 pb-0">
       <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Search</mat-label>
@@ -70,24 +70,21 @@ import { ProductsRemoteStore } from './product-remote.store';
       </div>
     }
   `,
-    styleUrl: './product-list-detail-component.css',
-    imports: [
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatPaginatorModule,
-        MatButtonModule,
-        AsyncPipe,
-        JsonPipe,
-        MatListItem,
-        MatList,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        FormsModule,
-        ProductDetailComponent,
-        MatDivider,
-    ],
-    providers: [ProductsRemoteStore]
+  styleUrl: './product-list-detail-component.css',
+  imports: [
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatListItem,
+    MatList,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    FormsModule,
+    ProductDetailComponent,
+  ],
+  providers: [ProductsRemoteStore],
 })
 export class ProductListDetailRemoteComponent {
   store = inject(ProductsRemoteStore);
