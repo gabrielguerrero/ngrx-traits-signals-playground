@@ -4,14 +4,13 @@ import { ProductListDetailLocalComponent } from './product-list-detail/product-l
 import { ProductListDetailRemoteComponent } from './product-list-detail/product-list-detail-remote.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    ProductListDetailLocalComponent,
-    ProductListDetailRemoteComponent,
-  ],
-  template: '<product-list-detail-local/>',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        ProductListDetailLocalComponent,
+        ProductListDetailRemoteComponent,
+    ],
+    template: '<product-list-detail-local/>'
 })
 export class AppComponent {
   title = 'ngrx-traits-signals-playground';

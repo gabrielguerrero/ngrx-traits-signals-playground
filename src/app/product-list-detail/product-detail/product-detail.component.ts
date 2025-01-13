@@ -7,9 +7,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProductDetail } from '../../models';
 
 @Component({
-  selector: 'product-detail',
-
-  template: `
+    selector: 'product-detail',
+    template: `
         <mat-card>
           <mat-card-header>
             <mat-card-title>{{ product().name }}</mat-card-title>
@@ -23,9 +22,8 @@ import { ProductDetail } from '../../models';
           </mat-card-content>
         </mat-card>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [MatCardModule, MatProgressSpinnerModule, CurrencyPipe],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatCardModule, MatProgressSpinnerModule, CurrencyPipe]
 })
 export class ProductDetailComponent {
   product = input.required<ProductDetail>();

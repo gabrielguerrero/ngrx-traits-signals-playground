@@ -15,8 +15,8 @@ import { Product } from '../models';
 import { MatDivider } from '@angular/material/divider';
 
 @Component({
-  selector: 'product-list-detail-local',
-  template: `
+    selector: 'product-list-detail-local',
+    template: `
     <form class="p-8 pb-0">
       <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Search</mat-label>
@@ -68,25 +68,24 @@ import { MatDivider } from '@angular/material/divider';
       </div>
     }
   `,
-  styleUrl: './product-list-detail-component.css',
-  standalone: true,
-  imports: [
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    AsyncPipe,
-    JsonPipe,
-    MatListItem,
-    MatList,
-    MatFormField,
-    MatLabel,
-    MatInput,
-    FormsModule,
-    ProductDetailComponent,
-    MatDivider,
-  ],
-  providers: [ProductsLocalStore],
+    styleUrl: './product-list-detail-component.css',
+    imports: [
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        AsyncPipe,
+        JsonPipe,
+        MatListItem,
+        MatList,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FormsModule,
+        ProductDetailComponent,
+        MatDivider,
+    ],
+    providers: [ProductsLocalStore]
 })
 export class ProductListDetailLocalComponent {
   store = inject(ProductsLocalStore);
