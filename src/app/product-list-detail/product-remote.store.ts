@@ -1,5 +1,7 @@
 import { inject } from '@angular/core';
 import {
+  callConfig,
+  typedCallConfig,
   withCalls,
   withCallStatus,
   withEntitiesLoadingCall,
@@ -49,5 +51,8 @@ export const ProductsRemoteStore = signalStore(
   withCalls(() => ({
     loadProductDetail: ({ id }: { id: string }) =>
       inject(ProductService).getProductDetail(id),
+    test: callConfig({
+      call: () => inject(ProductService).getProductDetail('1'),
+    }),
   })),
 );
