@@ -23,7 +23,7 @@ import { ProductsRemoteStore } from './product-remote.store';
         <input
           type="text"
           matInput
-          [ngModel]="store.productsFilter().search"
+          [ngModel]="store.productsEntitiesFilter().search"
           name="search"
           (ngModelChange)="
             store.filterProductsEntities({ filter: { search: $event } })
@@ -31,7 +31,7 @@ import { ProductsRemoteStore } from './product-remote.store';
         />
       </mat-form-field>
     </form>
-    @if (store.productsCurrentPage().isLoading) {
+    @if (store.productsEntitiesCurrentPage().isLoading) {
       <mat-spinner />
     } @else {
       <div class="list-detail">
@@ -40,7 +40,7 @@ import { ProductsRemoteStore } from './product-remote.store';
             <!-- 👇 we use store.entitiesCurrentPage().entities
               instead of store.entities() ↓ -->
             @for (
-              product of store.productsCurrentPage().entities;
+              product of store.productsEntitiesCurrentPage().entities;
               track product.id
             ) {
               <mat-list-item
@@ -54,10 +54,10 @@ import { ProductsRemoteStore } from './product-remote.store';
                   needed for the paginator, and loadEntitiesPage
                   handles page changes -->
           <mat-paginator
-            [length]="store.productsCurrentPage().total"
-            [pageSize]="store.productsCurrentPage().pageSize"
-            [pageIndex]="store.productsCurrentPage().pageIndex"
-            (page)="store.loadProductsPage($event)"
+            [length]="store.productsEntitiesCurrentPage().total"
+            [pageSize]="store.productsEntitiesCurrentPage().pageSize"
+            [pageIndex]="store.productsEntitiesCurrentPage().pageIndex"
+            (page)="store.loadProductsEntitiesPage($event)"
           />
         </div>
         @if (store.isLoadProductDetailLoading()) {

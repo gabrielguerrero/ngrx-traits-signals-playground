@@ -8,9 +8,10 @@ import {
   withEntitiesRemoteFilter,
   withEntitiesRemotePagination,
   withEntitiesSingleSelection,
+  withLogger,
 } from '@ngrx-traits/signals';
 import { signalStore, type } from '@ngrx/signals';
-import { withEntities } from '@ngrx/signals/entities';
+import { entityConfig, withEntities } from '@ngrx/signals/entities';
 
 import { Product } from '../models';
 import { ProductService } from '../services/product.service';
@@ -18,32 +19,38 @@ import { map } from 'rxjs/operators';
 
 const entity = type<Product>();
 const collection = 'products';
+const productEntityConfig = entityConfig({
+  entity,
+  collection,
+  selectId: (entity) => entity.id,
+});
 export const ProductsRemoteStore = signalStore(
-  withEntities({ entity, collection }),
+  withEntities(productEntityConfig),
   withCallStatus({ collection, initialValue: 'loading' }),
   withEntitiesRemotePagination({
-    entity,
-    collection,
+    ...productEntityConfig,
     pageSize: 5,
     pagesToCache: 4,
   }),
   withEntitiesRemoteFilter({
-    entity,
-    collection,
+    ...productEntityConfig,
     defaultFilter: {
       search: '',
     },
   }),
-  withEntitiesSingleSelection({ entity, collection }),
+  withEntitiesSingleSelection(productEntityConfig),
   // this replace the withHooks
   withEntitiesLoadingCall({
-    collection,
-    fetchEntities: ({ productsFilter, productsPagedRequest }) => {
+    ...productEntityConfig,
+    fetchEntities: ({
+      productsEntitiesFilter,
+      productsEntitiesPagedRequest,
+    }) => {
       return inject(ProductService)
         .getProducts({
-          search: productsFilter().search,
-          take: productsPagedRequest().size,
-          skip: productsPagedRequest().startIndex,
+          search: productsEntitiesFilter().search,
+          take: productsEntitiesPagedRequest().size,
+          skip: productsEntitiesPagedRequest().startIndex,
         })
         .pipe(map((res) => ({ entities: res.resultList, total: res.total })));
     },
@@ -51,8 +58,6 @@ export const ProductsRemoteStore = signalStore(
   withCalls(() => ({
     loadProductDetail: ({ id }: { id: string }) =>
       inject(ProductService).getProductDetail(id),
-    test: callConfig({
-      call: () => inject(ProductService).getProductDetail('1'),
-    }),
   })),
+  withLogger({ name: 'store' }),
 );
